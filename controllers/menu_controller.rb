@@ -10,10 +10,11 @@ class MenuController
   def main_menu
     puts "Main Menu - #{@address_book.entries.count} entries"
     puts "1 - View all entries"
-    puts "2 - Create an entry"
-    puts "3 - Search for an entry"
-    puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "2 - View Entry Number n" #I got this on my own
+    puts "3 - Create an entry"
+    puts "4 - Search for an entry"
+    puts "5 - Import entries from a CSV"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -24,19 +25,23 @@ class MenuController
       system "clear"
       view_all_entries
       main_menu
-    when 2
+    when 2 #I got this on my own
       system "clear"
-      create_entry
+      view_entry_number_n
       main_menu
     when 3
       system "clear"
-      search_entries
+      create_entry
       main_menu
     when 4
       system "clear"
-      read_csv
+      search_entries
       main_menu
     when 5
+      system "clear"
+      read_csv
+      main_menu
+    when 6
       puts "Good-bye!"
 
       exit(0)
@@ -55,6 +60,21 @@ class MenuController
     end
     system "clear"
     puts "End of entries"
+  end
+
+  def view_entry_number_n
+    print "Entries start at 0: " #I got this from the video.
+    selection = gets.chomp.to_i #I got this on my own.
+
+    if selection < @address_book.entries.count #I got this from the video
+      puts @address_book.entries[selection] #I kept trying to figure out a fetch method here.
+      print "Press enter to return to the main menu"
+      gets.chomp #I got this from the video.
+      system "clear"
+    else
+      print "That is not a valid number. Enter a new selection. "
+      view_entry_number_n
+    end
   end
 
   def create_entry
