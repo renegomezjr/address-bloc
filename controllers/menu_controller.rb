@@ -18,7 +18,6 @@ class MenuController
     print "Enter your selection: "
 
     selection = gets.to_i
-    puts "You picked #{selection}"
 
     case selection
     when 1
