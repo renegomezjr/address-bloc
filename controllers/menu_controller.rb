@@ -99,7 +99,7 @@ class MenuController
     puts "e - edit this entry"
     puts "m - return to main menu"
 
-    selection = $stdin.gets.chomp
+    selection = gets.chomp
 
     case selection
     when "n"
@@ -162,7 +162,6 @@ class MenuController
   end
 
   def read_csv
-
     print "Enter CSV file to import: "
     file_name = gets.chomp
 
@@ -176,10 +175,10 @@ class MenuController
       entry_count = @address_book.import_from_csv(file_name).count
       system "clear"
       puts "#{entry_count} new entries added from #{file_name}"
-
     rescue
       puts "#{file_name} is not a valid CSV file, please enter the name of a valid CSV file"
       read_csv
+    end
   end
 
   def delete_entry(entry)
@@ -200,7 +199,7 @@ class MenuController
     entry.email = email if !email.empty?
     system "clear"
 
-    puts "Updated entry"
+    puts "Updated entry:"
     puts entry
   end
 end
