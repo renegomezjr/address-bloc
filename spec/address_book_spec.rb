@@ -19,7 +19,7 @@ RSpec.describe AddressBook do
     end
 
     it "should initialize entries as empty" do
-      expect(book.entries.size).to eq(0)
+      expect(book.entries.length).to eq(0)
     end
   end
 
@@ -37,6 +37,17 @@ RSpec.describe AddressBook do
       expect(new_entry.name).to eq('Ada Lovelace')
       expect(new_entry.phone_number).to eq('010.012.1815')
       expect(new_entry.email).to eq('augusta.king@lovelace.com')
+    end
+  end
+
+  describe "#tnt_entries" do
+    it "deletes all entries" do
+      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+
+      book.tnt_entries
+      expect(book.entries.length).to eq(0)
     end
   end
 

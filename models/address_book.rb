@@ -49,4 +49,8 @@ class AddressBook
     return nil
   end
 
+  def tnt_entries
+    @entries.clear
+  end
+
 end
